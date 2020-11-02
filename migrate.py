@@ -210,7 +210,7 @@ def register_user(
 
     data = {
         "password": password,
-        "displayname": "".join([displayname, config_yaml["name-suffix"]]),
+        "displayname": "".join([user, config_yaml["name-suffix"]]),
         "admin": admin,
     }
 
