@@ -242,6 +242,7 @@ def register_room(
     body = {
         "preset": preset,
         "name": "".join([name, config_yaml["room-suffix"]]),
+		"room_alias_name": name,
         "topic": topic,
         "creation_content": {
             "m.federate": config_yaml["federate-rooms"]
