@@ -241,6 +241,7 @@ def register_room(
 
     body = {
         "preset": preset,
+		"visibility": public,
         "name": "".join([name, config_yaml["room-suffix"]]),
 		"room_alias_name": name,
         "topic": topic,
