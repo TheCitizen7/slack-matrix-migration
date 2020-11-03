@@ -611,7 +611,7 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
 
         # replys / threading
         if "thread_ts" in message and "parent_user_id" in message and not "replies" in message: # this message is a reply to another message
-            if (message["user"] == "USLACKBOT"):
+			if (message["user"] == "USLACKBOT"):
 				return txnId				
 			is_reply = True
             if not message["user"]+message["ts"] in replyLUT:
