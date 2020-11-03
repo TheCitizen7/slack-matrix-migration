@@ -504,6 +504,7 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
         if "subtype" in message:
             if (message["subtype"] == "bot_message" or
                 message["subtype"] == "bot_remove" or
+				message["subtype"] == "slackbot_response" or
                 message["subtype"] == "channel_name" or
                 message["subtype"] == "channel_join" or
                 message["subtype"] == "channel_purpose" or
