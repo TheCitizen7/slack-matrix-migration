@@ -521,6 +521,10 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
         if "hidden" in message:
             if message["hidden"] == True:
                 return txnId
+        # ignore hidden files message
+        if "is_hidden_by_limit" in message:
+            if message["is_hidden_by_limit"] == True:
+                return txnId
 
         if "user" in message: #TODO what messages have no user?
             if not message["user"] in userLUT:
