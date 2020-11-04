@@ -617,10 +617,11 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
                 if not is_later:
                     later.append(message)
                 return txnId
-            if message["user"]=="USLACKBOT":
+            if not message["user"].startswith('USLACKBOT'):
+                slack_event_id = replyLUT[message["user"]+message["ts"]]
+                matrix_event_id = eventLUT[slack_event_id]
+            else
                 return txnId
-            slack_event_id = replyLUT[message["user"]+message["ts"]]
-            matrix_event_id = eventLUT[slack_event_id]
 
         # TODO pinned / stared items?
 
