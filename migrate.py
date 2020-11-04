@@ -620,7 +620,7 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
             if not message["user"].startswith('USLACKBOT'):
                 slack_event_id = replyLUT[message["user"]+message["ts"]]
                 matrix_event_id = eventLUT[slack_event_id]
-            else
+            else:
                 return txnId
 
         # TODO pinned / stared items?
