@@ -241,9 +241,9 @@ def register_room(
 
     body = {
         "preset": preset,
-		"visibility": "public",
+        "visibility": "public",
         "name": "".join([name, config_yaml["room-suffix"]]),
-		"room_alias_name": name,
+        "room_alias_name": name,
         "topic": topic,
         "creation_content": {
             "m.federate": config_yaml["federate-rooms"]
@@ -504,7 +504,7 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
         if "subtype" in message:
             if (message["subtype"] == "bot_message" or
                 message["subtype"] == "bot_remove" or
-				message["subtype"] == "slackbot_response" or
+                message["subtype"] == "slackbot_response" or
                 message["subtype"] == "channel_name" or
                 message["subtype"] == "channel_join" or
                 message["subtype"] == "channel_purpose" or
@@ -536,29 +536,29 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
 
         # list of subtypes
         '''
-        bot_message	A message was posted by an app or integration
-        me_message	A /me message was sent
-        message_changed	A message was changed
-        message_deleted	A message was deleted
-        channel_join	A member joined a channel
-        channel_leave	A member left a channel
-        channel_topic	A channel topic was updated
-        channel_purpose	A channel purpose was updated
-        channel_name	A channel was renamed
-        channel_archive	A channel was archived
-        channel_unarchive	A channel was unarchived
-        group_join	A member joined a group
-        group_leave	A member left a group
-        group_topic	A group topic was updated
-        group_purpose	A group purpose was updated
-        group_name	A group was renamed
-        group_archive	A group was archived
-        group_unarchive	A group was unarchived
-        file_share	A file was shared into a channel
-        file_reply	A reply was added to a file
-        file_mention	A file was mentioned in a channel
-        pinned_item	An item was pinned in a channel
-        unpinned_item	An item was unpinned from a channel
+        bot_message    A message was posted by an app or integration
+        me_message    A /me message was sent
+        message_changed    A message was changed
+        message_deleted    A message was deleted
+        channel_join    A member joined a channel
+        channel_leave    A member left a channel
+        channel_topic    A channel topic was updated
+        channel_purpose    A channel purpose was updated
+        channel_name    A channel was renamed
+        channel_archive    A channel was archived
+        channel_unarchive    A channel was unarchived
+        group_join    A member joined a group
+        group_leave    A member left a group
+        group_topic    A group topic was updated
+        group_purpose    A group purpose was updated
+        group_name    A group was renamed
+        group_archive    A group was archived
+        group_unarchive    A group was unarchived
+        file_share    A file was shared into a channel
+        file_reply    A reply was added to a file
+        file_mention    A file was mentioned in a channel
+        pinned_item    An item was pinned in a channel
+        unpinned_item    An item was unpinned from a channel
         '''
 
         body = message["text"]
@@ -679,11 +679,11 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
                 for reaction in message["reactions"]:
                     for user in reaction["users"]:
                         #print("Send reaction in room " + roomId)
-						try:
-							send_reaction(config, roomId, eventId, emojize(":"+reaction["name"]+":", use_aliases=True), userLUT[user], txnId)
-							txnId = txnId + 1
-						except KeyError:
-							print("KeyError in reaction at " + message["ts"])
+                        try:
+                            send_reaction(config, roomId, eventId, emojize(":"+reaction["name"]+":", use_aliases=True), userLUT[user], txnId)
+                            txnId = txnId + 1
+                        except KeyError:
+                            print("KeyError in reaction at " + message["ts"])
 
     else:
         print("Ignoring message type " + message["type"])
