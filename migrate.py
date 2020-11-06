@@ -679,8 +679,11 @@ def parse_and_send_message(config, message, matrix_room, txnId, is_later):
                 for reaction in message["reactions"]:
                     for user in reaction["users"]:
                         #print("Send reaction in room " + roomId)
-                        send_reaction(config, roomId, eventId, emojize(reaction["name"], use_aliases=True), userLUT[user], txnId)
-                        txnId = txnId + 1
+						try:
+							send_reaction(config, roomId, eventId, emojize(":"+reaction["name"]+":", use_aliases=True), userLUT[user], txnId)
+							txnId = txnId + 1
+						except KeyError:
+							print("KeyError in reaction at " + message["ts"])
 
     else:
         print("Ignoring message type " + message["type"])
